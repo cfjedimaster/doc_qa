@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doc Q&A</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="topbar">
+        <h1 class="brand">Doc Q&amp;A</h1>
+        <label class="file-btn">
+          Choose file…
+          <input
+            id="file-input"
+            type="file"
+            accept=".pdf,.xlsx,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation"
+          />
+        </label>
+      </header>
+
+      <main class="workspace">
+        <section class="pane pane-document" aria-label="Document">
+          <div class="pane-header">
+            <h2 class="pane-title">Document</h2>
+            <p id="doc-filename" class="pane-meta is-hidden" hidden aria-hidden="true"></p>
+          </div>
+
+          <div id="doc-empty" class="empty-state">
+            <p>Select a PDF, DOCX, XLSX, or PPTX file to preview it here.</p>
+            <label class="file-btn file-btn-secondary">
+              Choose file…
+              <input
+                id="file-input-empty"
+                type="file"
+                accept=".pdf,.xlsx,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation"
+              />
+            </label>
+          </div>
+
+          <div id="document-scroll" class="document-scroll is-hidden" hidden aria-hidden="true">
+            <article id="document-view" class="document-page"></article>
+          </div>
+        </section>
+
+        <aside class="pane pane-ai" aria-label="AI tools">
+          <div class="summary-block">
+            <h2 class="pane-title">Summary</h2>
+            <div id="summary-empty" class="empty-state empty-state-compact">
+              <p>A summary of the selected document will appear here.</p>
+            </div>
+            <div id="summary" class="summary-body is-hidden" hidden aria-hidden="true"></div>
+          </div>
+
+          <div class="qa-block">
+            <h2 class="pane-title">Ask about this document</h2>
+            <div id="qa-thread" class="qa-thread" aria-live="polite">
+              <p id="qa-empty" class="qa-hint">Load a document, then ask a question.</p>
+            </div>
+            <form id="qa-form" class="qa-form">
+              <input
+                id="qa-input"
+                type="text"
+                placeholder="Ask a question…"
+                autocomplete="off"
+                disabled
+              />
+              <button id="qa-submit" type="submit" disabled>Ask</button>
+            </form>
+          </div>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
